@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="css/panda.css">
+</head>
+<body>
+    <div class="panda">
+        <div class="ear"></div>
+        <div class="face">
+          <div class="eye-shade"></div>
+          <div class="eye-white">
+            <div class="eye-ball"></div>
+          </div>
+          <div class="eye-shade rgt"></div>
+          <div class="eye-white rgt">
+            <div class="eye-ball"></div>
+          </div>
+          <div class="nose"></div>
+          <div class="mouth"></div>
+        </div>
+        <div class="body"> </div>
+        <div class="foot">
+          <div class="finger"></div>
+        </div>
+        <div class="foot rgt">
+          <div class="finger"></div>
+        </div>
+      </div>
+      <form>
+        <div class="hand"></div>
+        <div class="hand rgt"></div>
+        <h1>あなたのすらっく<br>ほぞんします</h1>
+        <div class="form-group">
+          <input required="required" class="form-control"/>
+          <label class="form-label">Username    </label>
+        </div>
+        <div class="form-group">
+          <input id="password" type="password" required="required" class="form-control"/>
+          <label class="form-label">Password</label>
+          <p class="alert">Invalid Credentials..!!</p>
+        </div>
+        <button id="login" class="btn">ログイン</button>
+      </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- JQuery -->
+    <script type="module">
+        // ##################################
+        // 必要なFirebaseライブラリを読み込み
+        // ##################################
+        // firebase-app.js を読み込んでinitializeAppを使うことを宣言
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+        // firebase-database.js(認証用)を読み込んで青文字を使うことを宣言
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+
+        // ##################################
+        // FirebaseConfig [ KEYを取得して設定！！ ] 
+        // ##################################
+        //APIキーはここ
+
+            // Initialize Firebase
+        // 上のキーで接続しに行っている
+        const app = initializeApp(firebaseConfig);
+        // ##################################
+        // GoogleAuth(認証用)
+        // ##################################
+        const provider = new GoogleAuthProvider();
+        provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+        const auth = getAuth();
+        // ##################################
+        // Login処理
+        // ##################################
+        $("#login").on("click", function () {
+            console.log(auth, 'auth');
+            console.log(provider, 'provider');
+            //Google認証完了の処理
+            signInWithPopup(auth, provider).then((result) => {
+                // Login後のページ遷移
+                location.href = "index.html";  //遷移先次のページ　ログインが成功したら次のページに飛ぶ
+                console.log('ログイン成功');
+            }).catch((error) => {
+                console.log('ログイン失敗');
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+        });
+
+        //panda処理
+        $('#password').focusin(function(){
+  $('form').addClass('up')
+});
+$('#password').focusout(function(){
+  $('form').removeClass('up')
+});
+
+// Panda Eye move
+$(document).on( "mousemove", function( event ) {
+  var dw = $(document).width() / 15;
+  var dh = $(document).height() / 15;
+  var x = event.pageX/ dw;
+  var y = event.pageY/ dh;
+  $('.eye-ball').css({
+    width : x,
+    height : y
+  });
+});
+
+// validation
+
+
+$('.btn').click(function(){
+  $('form').addClass('wrong-entry');
+    setTimeout(function(){ 
+       $('form').removeClass('wrong-entry');
+     },3000 );
+});
+    </script>
+</body>
+</html>

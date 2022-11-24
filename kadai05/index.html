@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Slack</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <script src="https://kit.fontawesome.com/ca56fbab82.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 入力エリア -->
+    <form method="POST" action="example.cgi" name="form1" onSubmit="return check()" class="genre_area">
+        <div id="genre">
+            <label class="label radio"><input type="radio" name="radio" class="radio" id="class" value="class"><i class="fa-solid fa-laptop fa-lg icon_color"></i>授業</label>
+            <label class="label radio"><input type="radio" name="radio" class="radio" id="tips" value="tips"><i class="fa-regular fa-lightbulb fa-lg icon_color"></i>Tips</label>
+            <label class="label radio"><input type="radio" name="radio" class="radio" id="idea" value="idea"><i class="fa-solid fa-pen-to-square fa-lg icon_color"></i>idea</label>
+            <label class="label radio"><input type="radio" name="radio" class="radio" id="others" value="others"><i class="fa-solid fa-otter fa-lg icon_color"></i>その他</label>
+        </div>
+
+        <div>
+            <textarea id="text" cols="30" rows="10" required></textarea>
+            <i class="fa-regular fa-paper-plane fa-2x icon_color" id="send"></i>
+            <!-- <input type="submit" name="" id="send">  -->
+        </div>
+
+        <div class="googleAuth_area">
+            <div id="uname">ログインした人の名前</div>
+            <!-- <img src="" alt="" id="prof" width=50%> -->
+            <button id="out" class="btn">logout</button>
+        </div>
+    </form>
+
+    <!-- 結果表示エリア -->
+    <div class="tab-wrap">
+        <input id="TAB02-01" type="radio" name="TAB02" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB02-01">授業関連</label>
+        <div class="tab-content">
+            <div  class="list2">
+                <ol id="output1" style="overflow:auto; height:250px;"
+                >
+                </ol>
+            </div>
+        </div>
+
+        <input id="TAB02-02" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-02">Tips</label>
+        <div class="tab-content">
+            <div class="list2">
+                <ol id="output2" style="overflow:auto; height:250px;">
+                </ol>
+            </div>
+        </div>
+
+        <input id="TAB02-03" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-03">アイデア</label>
+        <div class="tab-content">
+            <div class="list2">
+                <ol id="output3" style="overflow:auto; height:250px;">
+                </ol>
+            </div>
+        </div>
+
+        <input id="TAB02-04" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-04">その他</label>
+        <div class="tab-content">
+            <div class="list2">
+                <ol id="output4" style="overflow:auto; height:250px;">
+                </ol>
+            </div>
+        </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="module" src="js/script.js"></script>
+
+</body>
+</html>

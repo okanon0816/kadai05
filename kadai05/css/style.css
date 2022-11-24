@@ -1,0 +1,201 @@
+@charset "utf-8";
+
+html {
+  font-size: 62.5%; /* sets the base font to 10px for easier math */
+}
+ 
+body {
+  font-size: 16px;
+  font-size: 1.6rem;  
+  /* sets the default sizing to make sure nothing is actually 10px */
+  width : 95%;
+  margin: 0 auto;
+  color :#ee8992
+}
+
+/* タブ切り替えcss */
+.tab-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin:20px 0;
+}
+.tab-wrap:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: #ee8992;
+  ;
+  display: block;
+  order: -1;
+}
+.tab-label {
+  color: White;
+  background: LightGray;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px .5em;
+  order: -1;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  flex: 1;
+}
+.tab-label:not(:last-of-type) {
+  margin-right: 5px;
+}
+.tab-content {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+/* アクティブなタブ */
+.tab-switch:checked+.tab-label {
+  background: #ee8992;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: .5s opacity;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none;
+}
+
+/* メモ風リストcss */
+/* https://benri-no1.com/list/ */
+
+.list2 ul,.list2 ol {
+  padding: 0.3em 0.5em;
+  position: relative;
+  color: #ee8992;
+  list-style-type: none;
+}
+.list2 ol {
+  counter-reset: number;
+}
+.list2 ul li,.list2 ol li {
+  line-height: 1.5;
+  padding: 0.5em 0 0.5em 1.4em;
+  border-bottom: dashed 1px #ee8992;
+}
+.list2 ul li:before {
+  position: absolute;
+  font-family: FontAwesome;
+  content: "\f14a";
+  left : 0.5em;
+  color: #ee8992;
+}
+.list2 ol li:before {
+  display: inline-block;
+  position: absolute;
+  font-family: "Quicksand", sans-serif;
+  content: counter(number);
+  counter-increment: number;
+  left: 0.5em;
+  width: 22px;
+  height: 22px;
+  border-radius: 20%;
+  background: #ee8992;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 22px;
+}
+/* .list2 ul li:last-of-type,.list2 ol li:last-of-type{
+  border-bottom: none;
+} */
+
+/* リスト内配置等微調整 */
+.day {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+#delete {
+  float : right;
+}
+
+li {
+  /* background-color: tomato; */
+  width: 95%;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+#text {
+  border: 2px solid LightGray;
+  border-radius: 3%;
+  height: 150px;
+}
+
+.icon_color {
+  color:#ee8992
+}
+
+.fa-paper-plane:hover {
+  color: #e92c3c;
+}
+
+.fa-trash-can:hover {
+  color: #e92c3c;
+}
+
+.label {
+  margin-right: 20px;
+}
+
+#genre {
+  margin-bottom : 10px;
+  margin-right: 20px;
+  display:flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.genre_area {
+  display: flex;
+  margin-top: 10px;
+}
+
+.googleAuth_area {
+  margin-left: 50px;
+}
+
+/* ログイン、ログアウトボタン */
+.btn {
+  background-color: lightgray;
+  color : white;
+  padding: 3px 10px;
+  box-shadow:gray 0px 5px;
+  position: relative;
+  top:10px;
+  left:180px;
+}
+
+.btn:hover {
+  background-color: #ee8992;
+  color : white;
+  padding: 3px 10px;
+  box-shadow:#e92c3c 0px 5px;
+}
+
+
+.btn:active {
+  position: relative;
+  top : 5px;
+  box-shadow: none;
+}
